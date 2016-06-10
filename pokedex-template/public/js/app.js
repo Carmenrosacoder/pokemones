@@ -10,7 +10,7 @@ var pokemon = '<div class="row">'+
 	  '</div>'+
 	  '<div class="panel-body">'+
 		'<a href="/pokemon/bulbasaur">'+
-		  '<img class="avatar center-block" src="img/pokemons/bulbasaur.jpg">'+
+		  '<img class="avatar center-block" src="img/pokemons/'+'__foto__.jpg'+'">'+
 		'</a>'+
 	  '</div>'+
 	  '<div class="panel-footer">'+
@@ -35,8 +35,12 @@ $(document).ready(function() {
 	$.get("pokemon.json", function(data) {
 		var totalPokemon = data.length
 		for(var i=0; i < totalPokemon;i++){
-			var pokemonTmp = pokemon.replace('__nombre__', data[i].name)
-			$("#lista-pokemon").append(pokemonTmp);
+			$("#lista-pokemon").append(
+				 pokemon
+			.replace('__nombre__', data[i].name)
+			.replace('__foto__', data[i].name.toLowerCase())
+		);
+
 		}
 
 	})
